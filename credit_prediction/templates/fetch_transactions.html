@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>TRANSACTIONS</title>
+    <style>
+      .mycover {
+        padding: 30px;
+        padding-top: 70px;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+  {% include 'includes/_sidenav.html' %}
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-0">
+  <div class = "mycover" >
+  <h1>Transaction Details<br>
+    <small> Displaying list of all user transactions </small></h1>
+  <hr>
+  <table class="table table-striped" id="example">
+    <thead>
+    <tr>
+      <th>STATEMENT ID</th>
+      <th>BANK ID</th>
+      <th>USER NAME</th>
+      
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for transaction in transactions %}
+      <tr>
+        <td>{{transaction.txn_id}}</td>
+        <td>{{transaction.bank_id}}</td>
+        <td>{{transaction.name}}</td>
+        
+        <td><a href="transaction_details/{{transaction.txn_id}}" class="btn btn-success">FETCH INFO</a></td>   
+      </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+</div>
+      
+
+</main>
+</div>
+
+{% endblock %}

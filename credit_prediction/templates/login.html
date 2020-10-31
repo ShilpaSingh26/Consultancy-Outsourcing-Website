@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>LOGIN</title>
+<style>
+  body{
+    margin:0;
+    width:100%;
+  }
+  .container-fluid{
+    margin:0;
+    padding-left: 0;
+    padding-right: 0;
+    padding:0;
+  }
+    .mycover{
+      padding:6%;
+      margin:0;
+      width:100%;
+      height: 90vh;
+      scroll-behavior: unset;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position:relative;
+      background-position: center;
+      background-image: url('/static/img/moneyplant.jpg');
+  }
+  .mylogin{
+    margin-left:70%;
+  }
+  .loginbox{
+    margin-top:10px;
+    width: 320px;
+    height: 350px;
+    background:rgb(0,0,0,.6);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    border-radius: 20%;
+    box-sizing: border-box;
+    padding: 35px 35px;
+  }
+  .loginbox input[type="email"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 20px;
+    text-decoration: none;
+    color:#fff;
+  }
+  .loginbox input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 20px;
+    text-decoration: none;
+    color:#fff;
+  }
+  .loginbox input[type="submit"]
+  {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #28A745;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+  .loginbox input[type="submit"]:hover
+  {
+    cursor: pointer;
+    background: white;
+    color: #000;
+  }
+  
+  .loginbox input{
+    width: 100%;
+    margin-bottom:20px;
+    color:azure;
+  }
+</style>
+{% endblock %}
+{% block body %}
+<div class ="mycover">
+<div class="mylogin">
+  <div class="loginbox">
+      <h2 style="color:#28A745;text-decoration: underline;">LOGIN</h2>
+      <form  action="" method="POST">
+        <p>EMAIL-ID</p>
+        <input type="email" name="email" required autocomplete="off" value={{request.form.email}}>
+        <p>PASSWORD</p>
+        <input type="password" name="password" required autocomplete="off" value={{request.form.password}}>
+
+        <input type="submit" name="submit" value="LOGIN" class="button1">     
+      </form>
+  </div>
+  </div>
+  </div>
+  {% include 'includes/_footer.html' %}
+{% endblock %}

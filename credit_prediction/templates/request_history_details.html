@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>REQUEST HISTORY</title>
+    <style>
+  body{
+    margin:0;
+    width:100%;
+  }
+  .container-fluid{
+    margin:0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+    .mycover{
+    margin:0;
+    width:100%;
+    height: 90vh;
+    padding-top: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+
+    }
+    footer{
+      margin-top:100px;
+    }
+    table{
+      width:60%;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+<<div class="mycover">
+        {% if msg  %}
+        <p>Credit approval details not found</p>
+        {% else %}
+         
+        
+    <center><h2>REQUEST HISTORY DETAILS </h2></center>
+        <h2><small>CREDIT ID: {{details.credit_id}} </small><br>
+        <small>USER BANK ID: {{details.bank_id}} </small><br>
+        <small>DEPENDENTS: {{details.dependent}}</small><br>   
+        {% if details.self_employed == 1 %}
+        <small>SELF EMPLOYED: Yes</small><br>   
+        {% else %}
+        <small>SELF EMPLOYED: No</small><br>   
+        {% endif %}
+        
+
+        <small>INCOME: {{details.applicant_income}}</small><br>   
+
+        <small>COAPPLICANT INCOME: {{details.coapplicant_income}}</small><br>   
+
+        <small>REQUESTED CREDIT: {{details.requested_credit}}</small><br>   
+
+        
+
+
+        {% if details.approved == 1 %}
+        <small>APPROVED: Yes</small><br></h2>   
+        {% else %}
+       <small>APPROVED: No</small><br></h2>   
+        {% endif %}   
+</div>
+{% endif %}
+{% endblock %}
+  

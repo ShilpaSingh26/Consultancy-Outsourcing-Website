@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block head%}
+    <title>REQUEST DETAIL</title>
+{% endblock %}
+
+{% block body %}
+  <h1> REQUEST DETAILS <br>
+    <small>REQUEST ID: {{user_request.req_id}} </small></h1>
+    <a class="btn btn-success" href="/user_requests">GO BACK</a>
+  <hr>
+  <h3>REQUEST DETAILS</h3>
+  <table style="border: none;">
+    <tr><td>Request Date </td><td>{{user_request.rcreate_at}}</td></tr>
+    <tr><td>CREDIBILITY </td><td>{{user_request.prediction}}</td></tr>
+    <tr><td>Current Limit  </td><td>{{user_request.current_credit}}</td></tr>
+    <tr><td>CIBEL Score </td><td>{{user_request.old_cibel_score}}</td></tr>
+    <tr><td>NEW CIBEL </td><td>
+      {%if user_request.new_cibel_score == 0%}
+        N/A
+      {%else%}
+      {{user_request.new_cibel_score}}
+      {%endif%}
+    </td></tr>
+    <tr><td>NEW LIMIT </td><td>
+      {%if user_request.credit_limit == 0%}
+        N/A
+      {%else%}
+      {{user_request.credit_limit}}
+      {%endif%}
+    </td></tr>
+  </table>
+  <h3>CLENT DEMOGRAPHIC DETAILS</h3>
+  <table style="border: none;">
+    <tr><td>Bank ID </td><td>{{user_request.bank_id}}</td></tr>
+    <tr><td>Client Name </td><td>{{user_request.Name}}</td></tr>
+    <tr><td>Marital Status  </td><td>{{user_request.marital_status}}</td></tr>
+    <tr><td>Gender </td><td>{{user_request.sex}}</td></tr>
+    <tr><td>Age </td><td>{{user_request.age}}</td></tr>
+    <tr><td>Education </td><td>{{user_request.education}}</td></tr>
+    <tr><td>Statement ID </td><td>{{user_request.txn_id}}</td></tr>
+  </table>
+  <h3>STATEMENT DETAILS</h3>
+  <h4>PAY</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>PAY_0</th>
+      <th>PAY_2</th>
+      <th>PAY_3</th>
+      <th>PAY_4</th>
+      <th>PAY_5</th>
+      <th>PAY_6</th>    
+    </tr>
+      <tr>
+        <td>{{user_request.PAY_0}}</td>
+        <td>{{user_request.PAY_2}}</td>
+        <td>{{user_request.PAY_3}}</td>
+        <td>{{user_request.PAY_4}}</td>
+        <td>{{user_request.PAY_5}}</td>
+        <td>{{user_request.PAY_6}}</td> 
+      </tr>
+  </table>
+
+  <h4>BILL_AMT</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>BILL_AMT1</th>
+      <th>BILL_AMT2</th>
+      <th>BILL_AMT3</th>
+      <th>BILL_AMT4</th>
+      <th>BILL_AMT5</th>
+      <th>BILL_AMT6</th>
+      
+    </tr>
+      <tr>
+        <td>{{user_request.BILL_AMT1}}</td>
+        <td>{{user_request.BILL_AMT2}}</td>
+        <td>{{user_request.BILL_AMT3}}</td>
+        <td>{{user_request.BILL_AMT4}}</td>
+        <td>{{user_request.BILL_AMT5}}</td>
+        <td>{{user_request.BILL_AMT6}}</td> 
+      </tr>
+  </table>
+
+  <h4>PAY_AMT</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>PAY_AMT1</th>
+      <th>PAY_AMT2</th>
+      <th>PAY_AMT3</th>
+      <th>PAY_AMT4</th>
+      <th>PAY_AMT5</th>
+      <th>PAY_AMT6</th>
+      
+    </tr>
+      <tr>
+        <td>{{user_request.PAY_AMT1}}</td>
+        <td>{{user_request.PAY_AMT2}}</td>
+        <td>{{user_request.PAY_AMT3}}</td>
+        <td>{{user_request.PAY_AMT4}}</td>
+        <td>{{user_request.PAY_AMT5}}</td>
+        <td>{{user_request.PAY_AMT6}}</td> 
+      </tr>
+  </table>
+{% endblock %}

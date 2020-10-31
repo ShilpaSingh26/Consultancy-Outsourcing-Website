@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>REQUEST</title>
+    <style>
+  body{
+    margin:0;
+    width:100%;
+  }
+  .container-fluid{
+    margin:0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+    .mycover{
+    margin:0;
+    width:100%;
+    height: 90vh;
+    padding-top: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+
+    }
+    footer{
+      margin-top:100px;
+    }
+    table{
+      width:60%;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+        {% if credibility <= 0.5 %}
+        <div class="mycover">
+            <form action="{{ url_for('approval') }}" method="POST">
+            <center> <div class="alert alert-success"><h1>You are Eligible</h1></div></center>
+
+                <div class="form-group">
+                  <label for="Dependent">Dependent</label>
+                  <input type="number" class="form-control" name="Dependent" required>
+                </div>
+
+
+                <div class="form-group">
+                  <label for="Self_Employed">Self Employed</label>
+                  <select class="form-control" name="Self_Employed" required>
+                    <option value="">Select</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="Income">Income</label>
+                  <input type="number" class="form-control" name="Income" required>
+                </div>
+                <div class="form-group">
+                  <label for="Coapplicant_Income">Coapplicant Income</label>
+                  <input type="number" class="form-control" name="Coapplicant_Income" value=0 >
+                </div>
+
+                  <div class="form-group">
+                  <label for="Credit_Amount">Credit Amount</label>
+                  <input type="number" class="form-control" name="Credit_Amount" required>
+                </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+             {% else %}  
+            <center> <div class="alert alert-danger"><h1>You are Ineligible</h1></div></center>
+             {% endif %}
+           </div>
+{% endblock %}

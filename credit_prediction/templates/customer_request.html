@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>REQUEST</title>
+    <style>
+	body{
+		margin:0;
+		width:100%;
+	}
+	.container-fluid{
+        margin:0;
+        padding:0;
+	}
+    .mycover{
+        margin:0;
+          width:100%;
+          height:90vh;
+        }
+    .myform {
+        margin-top:0;
+        border: 1px solid rgb(3, 3, 3);
+        font-size:20px;
+        margin-right: 50pt;
+        padding: 10pt;
+        border-radius: 12px;
+        width:40%;
+    }
+    .myintro {
+        margin-top:5%;
+        background:transparent;
+        text-align:justify;
+        width:90%;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 10px;
+        margin-left:2%;
+        color:black;
+        z-index: 2;
+        font-size: large;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="mycover">
+    <div class="myintro">
+        <h1 class="display-4">My eligibility check</h1>
+        <hr style="background-color:black;height:1px;">
+        <p class="lead">Presenting to you the comfort of giving your credibility status instantly based on your transaction and demographic details verified and registered against your bank ID</p>
+      </div>
+      {%if displayerror %}
+      <center> <div class="alert alert-danger" style="width:80%"><h3>You have entered the wrong password</h3></div></center>
+    {%endif%}
+    <center><form method ="POST" action="{{ url_for('req_verification') }}">
+		<div class="myform">
+		<div class="form-group">
+		  <label for="formGroupExampleInput">Enter password to proceed</label>
+		  <hr style="background-color:black;height:1px;"> 
+		  <input type="password" autocomplete="off" name ="password" class="form-control" id="formGroupExampleInput" placeholder="Your password goes here" required value={{request.form.password}}>
+		</div>
+		<input type="submit" name="submit" value="Check now" class="btn btn-success"> 
+	</div>
+	  </form></center>
+{% include 'includes/_footer.html' %}
+{% endblock %}
+

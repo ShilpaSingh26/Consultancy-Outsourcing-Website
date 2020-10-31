@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Eligibility</title>
+{% endblock %}
+
+{% block body %}
+  <h1>Eligibility<br>
+    <small> Displaying list of all user  </small></h1>
+  <hr>
+  <style type="text/css">
+#in {
+  
+ 
+  margin-left: 800px;
+  margin-bottom: 12px;
+}
+  </style>
+
+
+  <div class="col-xs-2" id="in">
+    
+    <input class="form-control" id="text" type="text" onkeyup="myFunction()" placeholder="bank_id">
+                          
+  </div>
+
+  <div id="left">
+  <table class="table table-striped" id="transaction">
+    <tr>
+      
+      <th>BANK ID</th>
+      <th>USER NAME</th>
+      <th>ENTRY DATE</th>
+      <th> </th>
+    </tr>
+    {% for transaction in transactions %}
+      <tr>
+        
+        <td>{{transaction.bank_id}}</td>
+        <td>{{transaction.name}}</td>
+        <td>{{transaction.tcreate_at}}</td>
+        <td><a href="eligibilitycheck/{{transaction.txn_id}}" class="btn btn-success">Eligibility</a></td>   
+      </tr>
+    {% endfor %}
+  </table>
+</div>
+  <script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("text");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("transaction");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+
+}
+</script>
+{% endblock %}

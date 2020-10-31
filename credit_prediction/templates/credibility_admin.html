@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>ELIGIBILITY CHECK</title>
+    <style>
+      .mycover {
+        padding: 30px;
+        padding-top: 70px;
+    }
+    footer{
+        margin-top: 6.2%;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+  <div class="row">
+    {% include 'includes/_sidenav.html' %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-0">
+    <div class = "mycover" >
+            <h1 class="display-4">Customer eligibility check</h1>
+            <hr class="my-4">
+            <p class="lead">This can be done by entering the bank ID of the customer. To verify bank ID, click on <a style= "color:black; text-decoration:underline;" href="/customer_info">this</a>.</p>
+            {%if displayerror %}
+            <center> <div class="alert alert-danger" style="width:80%"><h3>The entered Bank ID does not exist</h3></div></center>
+            {%endif%}
+          <center><form method ="POST" action="{{ url_for('eligibilitycheck') }}">
+            <div style="border: 1px solid rgb(3, 3, 3);font-size:20px;margin-right: 50pt;padding: 10pt;border-radius: 12px;width:40%;">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Enter Customer Bank ID</label>
+              <hr style="background-color:black;height:1px;"> 
+              <input type="number" autocomplete="off" name ="bank_id" class="form-control" id="formGroupExampleInput" placeholder="Bank ID goes here" required value={{request.form.bank_id}}>
+            </div>
+            <input type="submit" name="submit" value="Check now" class="btn btn-success"> 
+        </div>
+          </form></center>
+    </div>  
+    
+    </main>
+  </div>
+{% endblock %}

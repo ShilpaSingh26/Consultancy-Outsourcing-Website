@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head%}
+    <title>STATEMENT DETAIL</title>
+{% endblock %}
+
+{% block body %}
+    <center><h2>STATEMENT DETAILS </h2></center>
+        <h2><small>STATEMENT ID: {{transaction.txn_id}} </small><br>
+        <a class="btn btn-success" href="/fetch_transactions">GO BACK</a>
+    <hr>
+  <h4>PAY</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>JUL</th>
+      <th>AUG</th>
+      <th>SEP</th>
+      <th>OCT</th>
+      <th>NOV</th>
+      <th>DEC</th>    
+    </tr>
+      <tr>
+        <td>{{transaction.PAY_0}}</td>
+        <td>{{transaction.PAY_2}}</td>
+        <td>{{transaction.PAY_3}}</td>
+        <td>{{transaction.PAY_4}}</td>
+        <td>{{transaction.PAY_5}}</td>
+        <td>{{transaction.PAY_6}}</td> 
+      </tr>
+  </table>
+
+  <h4>BILL AMT</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>JUL</th>
+      <th>AUG</th>
+      <th>SEP</th>
+      <th>OCT</th>
+      <th>NOV</th>
+      <th>DEC</th>    
+    </tr>
+      <tr>
+        <td>{{transaction.BILL_AMT1}}</td>
+        <td>{{transaction.BILL_AMT2}}</td>
+        <td>{{transaction.BILL_AMT3}}</td>
+        <td>{{transaction.BILL_AMT4}}</td>
+        <td>{{transaction.BILL_AMT5}}</td>
+        <td>{{transaction.BILL_AMT6}}</td> 
+      </tr>
+  </table>
+  <h4>PAY_AMT</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>JUL</th>
+      <th>AUG</th>
+      <th>SEP</th>
+      <th>OCT</th>
+      <th>NOV</th>
+      <th>DEC</th>    
+    </tr>
+      <tr>
+        <td>{{transaction.PAY_AMT1}}</td>
+        <td>{{transaction.PAY_AMT2}}</td>
+        <td>{{transaction.PAY_AMT3}}</td>
+        <td>{{transaction.PAY_AMT4}}</td>
+        <td>{{transaction.PAY_AMT5}}</td>
+        <td>{{transaction.PAY_AMT6}}</td> 
+      </tr>
+  </table>
+{% endblock %}

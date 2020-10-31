@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block head%}
+    <title>REQUEST DETAIL</title>
+    <style>
+      .mycover {
+        padding: 30px;
+        padding-top: 70px;
+    }
+    h5 {
+      font-weight: bold;
+    }
+    .answer{
+      font-weight: bold;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+  <div class="row">
+    {% include 'includes/_sidenav.html' %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-0">
+    <div class = "mycover" >
+    <h1>REQUEST ID: {{user_request.req_id}}<br></h1>
+    <bold><h5>User Bank ID: {{user_request.bank_id}}<br>
+      User Name: {{user_request.name}}<br>
+      Statement ID: {{txn_details.txn_id}}</h5></bold>
+    <a class="btn btn-success" href="/user_requests">GO BACK</a>
+  <hr>
+
+  <div class="flex-row-ak" style="
+    display: flex;
+    flex-direction: row;">
+  
+  <div style="border: 1px solid rgb(3, 3, 3);font-size:16px;margin-right: 50pt;padding: 10pt;border-radius: 10px;">
+    <h5>REQUEST DETAILS</h5>
+  <hr>
+  <table style="border:none;">
+    <tr><td>Request Date: </td><td class="answer"> {{user_request.rcreate_at}}</td></tr>
+
+    <tr><td>CREDIBILITY: </td>
+      {% if user_request.credibility == 0 %}
+      <td class="answer">Eligible</td>
+      {% else %}
+      <td class="answer">Not Eligible</td>
+      {% endif %}
+    </tr>
+    {% if flag ==0 %}
+    <tr><td>NEW LIMIT: </td><td class="answer">{{credit_approval_details.requested_credit}} </td></tr>
+    <tr><td>DEPENDENTS: </td><td class="answer">{{credit_approval_details.dependent}} </td></tr>
+    <tr><td>SELF EMPLOYED: </td>
+      {% if credit_approval_details.self_employed == 0 %}
+      <td class="answer">No</td>
+      {% else %}
+      <td class="answer">Yes</td>
+      {% endif %}
+    </tr>
+    <tr><td>Income: </td><td class="answer">{{credit_approval_details.applicant_income}} </td></tr>
+    <tr><td>Co Applicant Income: </td><td class="answer">{{credit_approval_details.coapplicant_income}} </td></tr>
+    <tr><td>Approved: </td>
+      {% if credit_approval_details.approved == 1 %}
+      <td class="answer">Yes</td>
+      {% else %}
+      <td class="answer">No</td>
+      {% endif %}
+    </tr>
+    {% endif  %}
+
+  </table>
+  </div>
+
+  <div style="border: 1px solid rgb(3, 3, 3);font-size:16px;margin-right: 50pt;padding: 10pt;border-radius: 10px;">
+  <h5>CLIENT DEMOGRAPHIC DETAILS</h5>
+  <hr>
+  <table style="border: none;">
+    <tr><td>Bank ID: </td><td class="answer"> {{txn_details.bank_id}}</td></tr>
+    <tr><td>Client Name: </td><td class="answer"> {{txn_details.name}}</td></tr>
+    <tr><td>Marital Status: </td><td class="answer"> 
+      {% if txn_details.marital_status == 1 or txn_details.marital_status == "1" %}
+        Married
+      {% elif txn_details.marital_status == 2 or txn_details.marital_status == "2" %}
+        Single
+      {% elif txn_details.marital_status == 3 or txn_details.marital_status == "3 "%}
+        Others
+      {% endif %}
+    </td></tr>
+    <tr><td>Gender: </td><td class="answer"> 
+      {% if txn_details.sex == 1 or txn_details.sex == "1"  %}
+        Male
+      {% elif txn_details.sex == 2 or txn_details.sex == "2" %}
+        Female
+      {% endif %}
+    </td></tr>
+    <tr><td>Age: </td><td class="answer"> {{txn_details.age}} years</td></tr>
+    <tr><td>Education: </td><td class="answer"> 
+      {% if txn_details.education == 1 or txn_details.education == "1" %}
+        Graduate school
+      {% elif txn_details.education == 2 or txn_details.education == "2" %}
+        University
+      {% elif txn_details.education == 3 or txn_details.education == "3"%}
+        High School 
+      {% elif txn_details.education == 4 or txn_details.education == "4" %}
+        Others
+      {% endif %}
+    </td></tr>
+    <tr><td>Statement ID: </td><td class="answer"> {{txn_details.txn_id}}</td></tr>
+  </table>
+  </div>
+  </div>
+  <br>
+  <h3>STATEMENT DETAILS</h3>
+  <h4>PAY</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>pay_0</th>
+      <th>pay_2</th>
+      <th>pay_3</th>
+      <th>pay_4</th>
+      <th>pay_5</th>
+      <th>pay_6</th>    
+    </tr>
+      <tr>
+        <td>{{txn_details.pay_0}}</td>
+        <td>{{txn_details.pay_2}}</td>
+        <td>{{txn_details.pay_3}}</td>
+        <td>{{txn_details.pay_4}}</td>
+        <td>{{txn_details.pay_5}}</td>
+        <td>{{txn_details.pay_6}}</td> 
+      </tr>
+  </table>
+
+  <h4>bill_amt</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>bill_amt1</th>
+      <th>bill_amt2</th>
+      <th>bill_amt3</th>
+      <th>bill_amt4</th>
+      <th>bill_amt5</th>
+      <th>bill_amt6</th>
+      
+    </tr>
+      <tr>
+        <td>{{txn_details.bill_amt1}}</td>
+        <td>{{txn_details.bill_amt2}}</td>
+        <td>{{txn_details.bill_amt3}}</td>
+        <td>{{txn_details.bill_amt4}}</td>
+        <td>{{txn_details.bill_amt5}}</td>
+        <td>{{txn_details.bill_amt6}}</td> 
+      </tr>
+  </table>
+
+  <h4>pay_amt</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>pay_amt1</th>
+      <th>pay_amt2</th>
+      <th>pay_amt3</th>
+      <th>pay_amt4</th>
+      <th>pay_amt5</th>
+      <th>pay_amt6</th>
+      
+    </tr>
+      <tr>
+        <td>{{txn_details.pay_amt1}}</td>
+        <td>{{txn_details.pay_amt2}}</td>
+        <td>{{txn_details.pay_amt3}}</td>
+        <td>{{txn_details.pay_amt4}}</td>
+        <td>{{txn_details.pay_amt5}}</td>
+        <td>{{txn_details.pay_amt6}}</td> 
+      </tr>
+  </table>
+</div>
+      
+{% include 'includes/_footer.html' %}
+</main>
+</div>
+{% endblock %}

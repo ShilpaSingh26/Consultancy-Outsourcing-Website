@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>REQUEST HISTORY</title>
+    <style>
+  body{
+    margin:0;
+    width:100%;
+  }
+  .container-fluid{
+    margin:0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+    .mycover{
+    margin:0;
+    width:100%;
+    height: 90vh;
+    padding-top: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+
+    }
+    footer{
+      margin-top:100px;
+    }
+    table{
+      width:60%;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+<<div class="mycover">
+  <h1>REQUEST HISTORY<br>
+    <small></small></h1>
+  <hr>
+  <table class="table table-striped">
+    <tr>
+      <th>REQUEST_ID</th>
+      <th>TXN_ID</th>
+      <th>CREDIBILITY</th>
+      <th></th>
+    </tr>
+    {% for his in history %}
+      <tr>
+        <td>{{his.request_id}}</td>
+        <td>{{his.txn_id}}</td>
+        {% if his.credibility == 0  %}
+        <td>Eligible</td>
+        {% else %}
+        <td>Not Eligible</td>
+        {% endif %}
+
+
+
+        {% if his.credibility == 0 %}
+        <td><a href="request_history_details/{{his.request_id}}" class="btn btn-success">MORE INFO</a></td>   
+        {% endif %}
+      
+      </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

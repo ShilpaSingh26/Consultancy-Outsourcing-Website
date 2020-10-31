@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>ELIGIBILITY RESULT</title>
+    <style>
+      .mycover {
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 70px;
+    }
+    
+    </style>
+{% endblock %}
+{% block body %}
+  <div class="row">
+    {% include 'includes/_sidenav.html' %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-0">
+    <div class = "mycover" >
+        <div class="jumbotron">
+            <h1 class="display-4">Eligibility Result</h1>
+            <hr class="my-4">
+            {%if  prediction  <= 0.5%}
+                <p class="lead">The bank account with id {{name}} belongs to {{bank_id}}.</p> 
+                <p class="lead"> On taking the demographic and transactional details of the last six months it found that the user is POTENTIAL CUSTOMER and can be offered more facilities from the bank side.</p>
+            {%else%}
+                <p class="lead">The bank account with id {{name}} belongs to {{bank_id}}.</p> 
+                <p class="lead"> On taking the demographic and transactional details of the last six months it found that the user is NOT POTENTIAL CUSTOMER and cannot be offered more facilities from the bank side.</p>
+            {%endif%}
+           
+            <p class="lead">
+              <a class="btn btn-primary btn-lg" href="/credibility_admin" role="button">BACK</a>
+            </p>
+          </div>
+    </div>  
+    {% include 'includes/_footer.html' %}
+    </main>
+  </div>
+{% endblock %}

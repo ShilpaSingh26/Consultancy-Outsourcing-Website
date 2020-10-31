@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head%}
+    <title>Eligibility Info</title>
+{% endblock %}
+
+{% block body %}
+        {% if credibility == 1 %}
+            <form action="{{ url_for('requestinfo') }}" method="POST">
+            <center> <div class="alert alert-success"><h1>Customer is Eligible</h1></div></center>
+            <div class="form-group">
+              <label for="cibel_score">Cibel Score</label>
+              <input class="form-control" type="text" name="cibel_score" placeholder="cibel_score" id="cibel_score" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        
+             {% else %}  
+            <center> <div class="alert alert-danger"><h1>Customer is Ineligible</h1></div></center>
+             {% endif %}
+{% endblock %}

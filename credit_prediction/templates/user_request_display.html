@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>USER REQUESTS</title>
+    <style>
+      .mycover {
+        padding: 30px;
+        padding-top: 70px;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+  <div class="row">
+    {% include 'includes/_sidenav.html' %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-0">
+    <div class = "mycover" >
+      <h1> User Requests <br>
+        <small> Displaying list of all user requests </small></h1>
+      <hr>
+      <table class="table table-striped" id="example">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>BANK ID</th>
+          <th>USER NAME</th>
+          <th>CREDIBILITY</th>
+          <th>DATE</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for request in requests %}
+          <tr>
+            <td>{{request.request_id}}</td>
+            <td>{{request.bank_id}}</td>
+            <td>{{request.name}}</td>
+            {%if request.credibility == 0  %}
+                <td>Eligible</td>
+            {% else %}
+                <td>Not Eligible</td>
+            {% endif %}
+            <td>{{request.rcreate_at}}</td>
+            <td><a href="request_details/{{request.request_id}}" class="btn btn-success">View more</a></td>    
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      </div>
+      
+      {% include 'includes/_footer.html' %}
+    </main>
+  </div>
+{% endblock %}

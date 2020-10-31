@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block head%}
+    <title>ABOUT US</title>
+    <style>
+		body{
+			margin:0;
+			width:100%;
+		}
+		.container-fluid{
+			margin:0;
+			padding-left: 0;
+			padding-right: 0;
+		}
+        .mycover{
+			margin:0;
+			  width:100%;
+			  height: 90vh;
+			  background-size: cover;
+			  background-repeat: no-repeat;
+			position:relative;
+			background-position: center;
+  		    background-image: url('/static/img/newspaper.jpg');
+		}
+		.about {
+			margin-top:1%;
+			background:transparent;
+			text-align:justify;
+			width:60%;
+			font-weight: bold;
+			padding: 10px;
+			border-radius: 10px;
+			margin-left:2%;
+			color:#083b66;
+			z-index: 2;
+			font-size: large;
+		}
+		h1{
+			font-weight: bold;
+			margin-top: 8%;
+		}
+    </style>
+{% endblock %}
+{% block body %}
+<div class="mycover">
+<div class="about">
+    <h1>Making decisions simpler...</h1>
+    <p>Banking industry for the life and blood of any economy and are
+        often subjected to critical decisions that can impact their profitability.
+        We believe that such decisons should be taken soon enough without compromising on the accuracy and 
+        hence we present a robust solution built using modern technology stack that enables banks deal with 
+        customer retention, prospect acquisition and risk management in a seamless manner.</p>
+  </div>
+  </div>
+  {% include 'includes/_footer.html' %}
+{% endblock %}

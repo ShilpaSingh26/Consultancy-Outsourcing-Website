@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>ADMIN DASHBOARD</title>
+    <style>
+    .mycover{
+		margin:0;
+		width:100%;
+		min-height: 90vh;
+      	background-size: cover;
+  		background-repeat: no-repeat;
+		position:relative;
+		background-position: center;
+  		background-image: url('/static/img/home.jpg');
+		}
+	.mywelcome{
+		color:black;
+		padding-top:10%;
+		font-weight: bolder;
+	}
+    </style>
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		{% include 'includes/_sidenav.html' %}
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-0">
+		<div class = "mycover" >
+			<div class ="mywelcome"><center><h1>WELCOME </h1>
+				<h1>TO THE</h1>
+				<h1>ADMIN DASHBOARD!!!</h1></center>
+			</div>
+		</div>
+			{% include 'includes/_footer.html' %}
+		</main>
+	</div>
+	</div>
+{% endblock %}
+

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>MY TRANSACTIONS</title>
+    <style>
+	body{
+		margin:0;
+		width:100%;
+	}
+	.container-fluid{
+		margin:0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+    .mycover{
+		margin:0;
+  	width:100%;
+    height: 90vh;
+    padding-top: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+
+    }
+    footer{
+      margin-top:100px;
+    }
+    table{
+      width:60%;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="mycover">
+  <center><h2 style="font-weight:bold;">STATEMENT DETAILS </h2></center>
+  {%if displayerror %}
+      <center> <div class="alert alert-danger" style="width:80%"><h3>You have entered the wrong password</h3></div></center>
+    {%else%}
+    <h4><small>STATEMENT ID: {{transaction.txn_id}} </small><br>
+    <hr>
+  <h5>PAY</h5>
+  <table class="table table-striped">
+    <tr>
+      <th>JUL</th>
+      <th>AUG</th>
+      <th>SEP</th>
+      <th>OCT</th>
+      <th>NOV</th>
+      <th>DEC</th>    
+    </tr>
+      <tr>
+        <td>{{transaction.pay_0}}</td>
+        <td>{{transaction.pay_2}}</td>
+        <td>{{transaction.pay_3}}</td>
+        <td>{{transaction.pay_4}}</td>
+        <td>{{transaction.pay_5}}</td>
+        <td>{{transaction.pay_6}}</td> 
+      </tr>
+  </table>
+
+  <h5>BILL AMT</h5>
+  <table class="table table-striped">
+    <tr>
+      <th>JUL</th>
+      <th>AUG</th>
+      <th>SEP</th>
+      <th>OCT</th>
+      <th>NOV</th>
+      <th>DEC</th>    
+    </tr>
+      <tr>
+        <td>{{transaction.bill_amt1}}</td>
+        <td>{{transaction.bill_amt2}}</td>
+        <td>{{transaction.bill_amt3}}</td>
+        <td>{{transaction.bill_amt4}}</td>
+        <td>{{transaction.bill_amt5}}</td>
+        <td>{{transaction.bill_amt6}}</td> 
+      </tr>
+  </table>
+  <h5>PAY_amt</h5>
+  <table class="table table-striped">
+    <tr>
+      <th>JUL</th>
+      <th>AUG</th>
+      <th>SEP</th>
+      <th>OCT</th>
+      <th>NOV</th>
+      <th>DEC</th>    
+    </tr>
+      <tr>
+        <td>{{transaction.pay_amt1}}</td>
+        <td>{{transaction.pay_amt2}}</td>
+        <td>{{transaction.pay_amt3}}</td>
+        <td>{{transaction.pay_amt4}}</td>
+        <td>{{transaction.pay_amt5}}</td>
+        <td>{{transaction.pay_amt6}}</td> 
+      </tr>
+  </table>
+  {%endif%}
+</div>
+{% include 'includes/_footer.html' %}
+{% endblock %}
+

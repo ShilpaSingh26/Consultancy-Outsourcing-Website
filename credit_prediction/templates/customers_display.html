@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>CUSTOMERS</title>
+    <style>
+      .mycover {
+        padding: 30px;
+        padding-top: 70px;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+  <div class="row">
+    {% include 'includes/_sidenav.html' %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-0">
+    <div class = "mycover" >
+      <h1> Our Customers <br>
+        <small> Displaying list of all customers </small></h1>
+      <hr>
+      <table class="table table-striped" id="example">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>USER NAME</th>
+          <th>MARITAL STATUS</th>
+          <th>EDUCATION</th>
+          <th>GENDER</th>
+          <th>AGE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in customers %}
+          <tr>
+            <td>{{customer.bank_id}}</td>
+            <td>{{customer.name}}</td>
+            <td>
+                {% if customer.marital_status == 1 or customer.marital_status == "1" %}
+                Married
+                {% elif customer.marital_status == 2 or customer.marital_status == "2" %}
+                Single
+                {% elif customer.marital_status == 3 or customer.marital_status == "3 "%}
+                Others
+                {% endif %}
+            </td>
+
+           <td> {% if customer.education == 1 or customer.education == "1" %}
+            Graduate school
+            {% elif customer.education == 2 or customer.education == "2" %}
+            University
+            {% elif customer.education == 3 or customer.education == "3"%}
+            High School 
+            {% elif customer.education == 4 or customer.education == "4" %}
+            Others
+            {% endif %}
+            </td>
+
+            <td>{% if customer.sex == 1 or customer.sex == "1"  %}
+                Male
+              {% elif customer.sex == 2 or customer.sex == "2" %}
+                Female
+              {% endif %}</td>
+
+            <td>{{ customer.age}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      </div>
+      
+      
+    </main>
+  </div>
+{% endblock %}
